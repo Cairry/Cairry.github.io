@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/getstart/docker.md
+      link: /docs/install/docker.md
       
 features:
   - title: 多租户
