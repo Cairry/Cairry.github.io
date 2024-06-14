@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Client-go/ClientSet.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Istio/优化篇/image/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Istio/优化篇/降低Istio服务网格中Envoy的内存开销.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vitepress/config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/config.mts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +57,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718098390639</updated>
-      <workItem from="1718098391727" duration="30634000" />
+      <workItem from="1718098391727" duration="30916000" />
     </task>
     <servers />
   </component>
