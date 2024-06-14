@@ -40,6 +40,42 @@ export default defineConfig({
                         }
                     ]
                 },
+                {
+                    text: 'Client-go',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '四大客户端',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: 'ClientSet',
+                                    link: '/docs/Client-go/ClientSet.md'
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    text: 'Istio',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '优化',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '降低Istio服务网格中Envoy的内存开销',
+                                    link: '/docs/Istio/优化篇/降低Istio服务网格中Envoy的内存开销.md',
+                                },
+                                {
+                                    text: '修改Sidecar Proxy resource limit',
+                                    link: '/docs/Istio/优化篇/修改Sidecar Proxy resource limit.md'
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         },
 
