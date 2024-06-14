@@ -7,7 +7,7 @@ export default defineConfig({
     description: "智能高效的云原生监控系统！",
     ignoreDeadLinks: 'localhostLinks',
     lastUpdated: false,
-    base: '/w8t-docs/',
+    // base: '/w8t-docs/',
 
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
