@@ -12,7 +12,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/install/docker.md
+      link: /docs/
+    - theme: alt
+      text: 演示环境（admin/123）
+      link: http://8.147.234.89/
       
 features:
   - title: 多租户
