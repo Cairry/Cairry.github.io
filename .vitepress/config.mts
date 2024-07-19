@@ -74,6 +74,20 @@ export default defineConfig({
                         }
                     ]
                 },
+                {
+                    text: 'Exporter',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '基础概念',
+                            link: '/docs/Exporter/basic.md'
+                        },
+                        {
+                            text: '实战开发',
+                            link: '/docs/Exporter/start.md'
+                        }
+                    ]
+                }
             ]
         },
 
