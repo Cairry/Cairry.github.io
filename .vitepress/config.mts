@@ -42,41 +42,38 @@ export default defineConfig({
                     ]
                 },
                 {
-                    text: 'Client-go',
+                    text: 'Prometheus',
                     collapsed: true,
                     items: [
                         {
-                            text: '四大客户端',
-                            collapsed: true,
-                            items: [
-                                {
-                                    text: 'ClientSet',
-                                    link: '/docs/Client-go/ClientSet.md'
-                                }
-                            ]
+                            text: 'Prometheus',
+                            link: '/docs/Prometheus/index.md'
                         },
+                        {
+                            text: 'PromQL内置常用算法函数',
+                            link: '/docs/Prometheus/promql.md'
+                        },
+                        {
+                            text: 'RelabelConfig标签管理',
+                            link: '/docs/Prometheus/relabel_config.md'
+                        }
+                        ,
+                        {
+                            text: '服务发现',
+                            link: '/docs/Prometheus/ServiceDiscover.md'
+                        }
                     ]
                 },
                 {
-                    text: 'Istio',
+                    text: 'VictoriaMetrics',
                     collapsed: true,
                     items: [
                         {
-                            text: '优化',
-                            collapsed: true,
-                            items: [
-                                {
-                                    text: '降低Istio服务网格中Envoy的内存开销',
-                                    link: '/docs/Istio/优化篇/降低Istio服务网格中Envoy的内存开销.md',
-                                },
-                                {
-                                    text: '修改Sidecar Proxy resource limit',
-                                    link: '/docs/Istio/优化篇/修改Sidecar Proxy resource limit.md'
-                                }
-                            ]
+                            text: 'VictoriaMetrics',
+                            link: '/docs/VictoriaMetrics/index.md'
                         }
                     ]
-                }
+                },
             ]
         },
 

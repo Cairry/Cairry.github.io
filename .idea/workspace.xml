@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/WatchAlert/MonitoringAnalysis/img/img.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/ServiceDiscover.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/img_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/img_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/promql.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/relabel_config.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vitepress/cache/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/cache/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vitepress/config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/config.mts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Client-go/ClientSet.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Istio/优化篇/image/img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Istio/优化篇/修改Sidecar Proxy resource limit.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Istio/优化篇/降低Istio服务网格中Envoy的内存开销.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -27,25 +47,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/zuxuan/Documents/workspace/react/Cairry.github.io&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/zuxuan/Documents/workspace/react/Cairry.github.io",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/docs/WatchAlert/MonitoringAnalysis/img" />
       <recent name="$PROJECT_DIR$/docs/Istio/优化篇/image" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -65,10 +112,26 @@
       <workItem from="1718098391727" duration="32217000" />
       <workItem from="1718358188205" duration="16643000" />
       <workItem from="1718972920262" duration="10276000" />
+      <workItem from="1721293075773" duration="13862000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>
