@@ -27,7 +27,7 @@ features:
   - title: 专业告警
     details: 相同类型数据源支持配置同一个规则，并支持规则生效周期、告警静默、告警聚合；
   - title: 通知对象
-    details: 支持飞书、钉钉等常用的Webhook通知；
+    details: 支持推送告警至Email、飞书、钉钉等平台；
   - title: 值班
     details: 安排指定成员在特定日期和时间段内处理告警，有效管理告警并提高工作效率；
 ---
