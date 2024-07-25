@@ -61,7 +61,15 @@ export default defineConfig({
                         {
                             text: '服务发现',
                             link: '/docs/Prometheus/ServiceDiscover.md'
-                        }
+                        },
+                        {
+                            text: '内存优化篇',
+                            link: '/docs/Prometheus/optimization_memory.md'
+                        },
+                        {
+                            text: '容量规划篇',
+                            link: '/docs/Prometheus/storage.md'
+                        },
                     ]
                 },
                 {
