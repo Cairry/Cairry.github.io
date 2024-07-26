@@ -601,3 +601,24 @@ last_over_time(http_request_duration_seconds{instance="server1"}[5m])
 ```
 **使用场景**
 - 用于监控系统或服务的最新状态，例如最新的响应时间、最新的请求数等。
+
+## group_right()
+用于 PromQL 查询的操作符，用于连接不同指标集合的标签。当进行不同指标集合之间的连接时，group_right 指定右侧指标集合的标签如何影响结果。它在 Prometheus 的 on 和 ignoring 操作符中与 * 或 / 操作符结合使用，以控制连接过程。
+
+**案例**
+
+假设有以下两个指标：
+- 左侧集合：`http_requests_total`，具有标签 `{instance, job}`
+- 右侧集合：`instance_info`，具有标签 `{instance, region, datacenter}`
+
+希望通过 `instance` 标签连接这两个集合，并保留 `region` 和 `datacenter` 标签。
+``` 
+http_requests_total
+* on(instance) group_right(region, datacenter) instance_info
+```
+- 连接方式：根据 `instance` 标签进行连接。
+
+- 保留信息：连接后结果中，保留来自右侧集合的 `region` 和 `datacenter` 标签。
+
+**使用场景**
+- 在需要将多个来源的指标进行聚合时，使用 `group_right` 保留来自右侧集合的上下文信息。

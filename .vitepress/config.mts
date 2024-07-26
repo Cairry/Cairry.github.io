@@ -93,7 +93,41 @@ export default defineConfig({
                         {
                             text: '实战开发',
                             link: '/docs/Exporter/start.md'
-                        }
+                        },
+                        {
+                            text: '常用监控',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: 'Node 服务器资源监控',
+                                    link: '/docs/Exporter/node.md'
+                                },
+                                {
+                                    text: 'Kubernetes 资源监控',
+                                    link: '/docs/Exporter/kubernetes.md'
+                                },
+                                {
+                                    text: 'Redis 资源监控',
+                                    link: '/docs/Exporter/redis.md'
+                                },
+                                {
+                                    text: 'MySQL 资源监控',
+                                    link: '/docs/Exporter/mysql.md'
+                                },
+                                {
+                                    text: 'MongoDB 资源监控',
+                                    link: '/docs/Exporter/mongo.md'
+                                },
+                                {
+                                    text: 'ElasticSearch 资源监控',
+                                    link: '/docs/Exporter/elasticsearch.md'
+                                },
+                                {
+                                    text: 'RocketMQ 资源监控',
+                                    link: '/docs/Exporter/rocketmq.md'
+                                },
+                            ]
+                        },
                     ]
                 }
             ]

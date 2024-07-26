@@ -5,13 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Prometheus/img_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Prometheus/img_6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Prometheus/optimization_memory.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Prometheus/storage.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/daemonset.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/deployment.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/elasticsearch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/mongo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/mysql.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/node.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/redis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/statefulset.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/elasticsearch.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/daemonset-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/daemonset-img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/daemonset-img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/deployment-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/deployment-img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/deployment-img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/es-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/es-img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/es-img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/mongo-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/mongo-img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/mysql-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/mysql-img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/mysql-img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/node-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/node-img2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/node-img3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/node-img4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/redis-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/redis-img2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/redis-img3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/statefulset-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/statefulset-img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/img/statefulset-img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/mongo.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/mysql.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/node.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/redis.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/rocketmq.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vitepress/config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/config.mts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Prometheus/relabel_config.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Prometheus/relabel_config.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Prometheus/promql.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Prometheus/promql.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +67,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2hjD383H7qD7iTNjkmJanNYmhUQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -62,6 +100,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/Exporter/img" />
       <recent name="$PROJECT_DIR$/docs/WatchAlert/MonitoringAnalysis/img" />
       <recent name="$PROJECT_DIR$/docs/Istio/优化篇/image" />
     </key>
@@ -102,7 +141,7 @@
       <workItem from="1718358188205" duration="16643000" />
       <workItem from="1718972920262" duration="10276000" />
       <workItem from="1721293075773" duration="18000000" />
-      <workItem from="1721812076226" duration="7848000" />
+      <workItem from="1721812076226" duration="24016000" />
     </task>
     <servers />
   </component>
