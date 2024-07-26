@@ -81,6 +81,7 @@ spec:
 
 ## 监控大盘
 
-[Dashboard JSON]()
+[Dashboard JSON](../Dashboard/rocketmq.json)
+
 
 
