@@ -82,6 +82,8 @@ spec:
 ## 监控大盘
 
 [Dashboard JSON](../Dashboard/rocketmq.json)
-
+![img.png](img/rocketmq-img.png)
+![img_1.png](img/rocketmq-img_1.png)
+![img_2.png](img/rocketmq-img_2.png)
 
 
