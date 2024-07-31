@@ -2,7 +2,7 @@
 本章针对服务器资源展开两部分的监控方向，以Kubernetes方式部署；
 
 - 服务器基础资源（node-exporter），包含服务器的CPU、Memory、Disk、Socket、Network以及Disk IO等；
-
+- 网络资源 （fping-exporter），包含服务器网络丢包率、平均延迟；
 - 进程资源（[node-process-exporter](https://github.com/Cairry/node-process-exporter)），包含进程的CPU、Memory、Open files；
 
 ## 监控范围
@@ -15,6 +15,9 @@
   - `sum(label_replace(max(irate(node_network_transmit_bytes_total{}[1m])) by (instance),"host_ip","$1","instance","(.*):.*"))by(instance)`：计算每秒发送的网络字节数。监控网络流量输出，帮助识别网络性能问题。
   - `avg(rate(node_disk_reads_completed_total{}[1m]))`：每秒完成的磁盘读取次数。监控磁盘读取活动，帮助识别磁盘 I/O 性能问题。
   - `avg(rate(node_disk_writes_completed_total{}[1m]))`：每秒完成的磁盘写入次数。监控磁盘写入活动，帮助识别磁盘性能瓶颈。
+- 网络性能
+  - `avg_over_time(fping_lost_count[5m])/avg_over_time(fping_sent_count[5m]) `: 网络丢包率。监控网络情况，帮助定位网络可达情况。
+  - `fping_rtt_sum / fping_rtt_count * 1000`: 网络延迟。监控网络到达端点实际的耗时情况。
 - 进程资源使用率
   - `describe_node_process_cpu_info{name!="containerd-shim", name!="containerd-shim-runc-v2"}`：进程级别的 CPU 使用情况。识别消耗 CPU 资源的进程，帮助进行进程性能优化。
   - `describe_node_process_memory_info{instance="${instance}", name!="containerd-shim", name!="containerd-shim-runc-v2"}`：进程级别的内存使用情况。识别高内存消耗的进程，帮助进行内存优化。
@@ -194,6 +197,48 @@ spec:
   type: ClusterIP
 ```
 
+## 部署Fping-exporter
+``` 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fping-exporter
+  namespace: monitor
+  labels:
+    app: fping-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fping-exporter
+  template:
+    metadata:
+      labels:
+        app: fping-exporter
+    spec:
+      containers:
+      - name: fping-exporter
+        image: joaorua/fping-exporter
+        ports:
+        - containerPort: 9605
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fping-exporter
+  namespace: monitor
+  labels:
+    app: fping-exporter
+spec:
+  type: ClusterIP
+  ports:
+  - port: 9605
+    targetPort: 9605
+  selector:
+    app: fping-exporter
+
+```
+
 ## Prometheus 端点配置
 ``` 
     - job_name: 'kubernetes-kubelets'
@@ -218,6 +263,23 @@ spec:
           target_label: __address__
           action: replace
         - action: labelmap
+        
+    - job_name: 'Fping'
+      scrape_interval: 1m
+      static_configs:
+        - targets:
+          - 114.114.114.114
+      metrics_path: /probe
+      relabel_configs:
+        - source_labels: [__address__]
+          target_label: __param_target
+        - source_labels: [__param_target]
+          separator: ;
+          target_label: instance
+          replacement: ${1}:${2}
+          action: replace
+        - target_label: __address__
+          replacement: fping-exporter.kube-monitoring:9605
 ```
 
 ## 监控大盘
@@ -227,4 +289,5 @@ spec:
 ![img.png](img/node-img.png)
 ![img.png](img/node-img2.png)
 ![img.png](img/node-img3.png)
+![img.png](img/node-img5.png)
 ![img.png](img/node-img4.png)
