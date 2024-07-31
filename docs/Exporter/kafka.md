@@ -18,6 +18,21 @@
 
 ## 安装Exporter
 ``` 
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  labels:
+    app: kafka
+  name: kafka-jaas
+  namespace: infra
+
+data:
+  client-password: ""
+  inter-broker-password: ""
+  zookeeper-password: ""
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
