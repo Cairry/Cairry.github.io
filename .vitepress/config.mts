@@ -126,6 +126,14 @@ export default defineConfig({
                                     text: 'RocketMQ 资源监控',
                                     link: '/docs/Exporter/rocketmq.md'
                                 },
+                                {
+                                    text: 'GPU 资源监控',
+                                    link: '/docs/Exporter/gpu.md'
+                                },
+                                {
+                                    text: 'Nginx 资源监控',
+                                    link: '/docs/Exporter/nginx.md'
+                                },
                             ]
                         },
                     ]
