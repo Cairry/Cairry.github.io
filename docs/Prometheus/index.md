@@ -182,6 +182,8 @@ remote_write:
 
 Prometheus 将传入数据写入本地存储，并并行将其复制到远程存储。这意味着--storage.tsdb.retention.time即使远程存储不可用，数据在本地存储中仍然可用。
 
+#### 场景1, HA多个配置不同的`Prometheus`实例
+
 如果您计划从多个 Prometheus 实例向 VictoriaMetrics 发送数据，请将以下行添加到Prometheus config
 >global部分： 
 > 这是必须的，因为要区分不同实例的数据。
@@ -192,6 +194,21 @@ global:
     datacenter: dc-123
 ```
 `datacenter=dc-123`这指示 Prometheus在将每个样本发送到远程存储之前为其添加标签。标签名称可以是任意的 -datacenter这只是一个例子。标签值在 Prometheus 实例中必须是唯一的，因此可以通过该标签对时间序列进行过滤和分组。
+
+
+#### 场景2, HA多个配置相同的`Prometheus`实例
+如果HA对中多个配置相同的`Prometheus`实例将数据写入同一个`VictoriaMetrics`实例，则重复数据删除可减少磁盘空间使用量。这些`Prometheus`实例的配置中必须具有相同的`external_labels`部分，因此它们将数据写入相同的时间序列。
+
+VM存储开启数据去重
+> 默认不去重
+> 
+> https://docs.victoriametrics.com/#deduplication
+
+多个实例推送相同的数据时，配置vmstorage的`-dedup.minScrapeInterval=scrape_interval`，这样可以防止VM存储相同的数据；
+
+建议的值`-dedup.ninscrapeInterval`必须等于`scrape_interval`Prometheus配置中的配置。建议`scrape_interval`在所有抓取目标中都使用一个值，保证一个间隔仅存储一个sample。
+
+#### 高负载优化
 
 对于高负载的 Prometheus 实例（每秒 200k+ 样本），可以应用以下调整：
 
@@ -209,5 +226,5 @@ remote_write:
 - `max_shards`：最大并发 shard（分片）数量。这里设置为 30，表示 Prometheus 在发送数据到远程存储时，最多可以使用 30 个并发 shard。这有助于提高数据发送的吞吐量。
 
 
-  使用远程写入会使 Prometheus 的内存使用量增加高达约 25%。如果您遇到 Prometheus 内存消耗过高的问题，请尝试降低max_samples_per_send和capacityparams。请记住，这两个参数是紧密相连的。在[此处阅读](https://prometheus.io/docs/practices/remote_write/)有关调整 Prometheus 远程写入的更多信息。 
+使用远程写入会使 Prometheus 的内存使用量增加高达约 25%。如果您遇到 Prometheus 内存消耗过高的问题，请尝试降低max_samples_per_send和capacityparams。请记住，这两个参数是紧密相连的。在[此处阅读](https://prometheus.io/docs/practices/remote_write/)有关调整 Prometheus 远程写入的更多信息。 
   
