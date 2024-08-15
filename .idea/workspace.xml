@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VictoriaMetrics/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +103,9 @@
       <workItem from="1718972920262" duration="10276000" />
       <workItem from="1721293075773" duration="18000000" />
       <workItem from="1721812076226" duration="46509000" />
-      <workItem from="1722925396256" duration="1531000" />
+      <workItem from="1722925396256" duration="2532000" />
+      <workItem from="1723173067868" duration="1046000" />
+      <workItem from="1723426668494" duration="1580000" />
     </task>
     <servers />
   </component>

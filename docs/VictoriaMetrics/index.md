@@ -200,6 +200,21 @@ http://<victoriametrics-addr>:8428/snapshot/list
 ### 单点模式部署
 >单点架构是all-in-one，一个服务内集成多个功能，如：采集、写入、查询、存储等。
 
+
+采集端配置
+> 使用`Secret`可以实现配置热加载, 内容经过base64加密；
+``` 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vm-agent-target
+  namespace: observability
+type: Opaque
+data:
+  prometheus.yaml: ICAgIGdsb2JhbDoKICAgICAgc2NyYXBlX2ludGVydmFsOiAxMHMKICAgIHNjcmFwZV9jb25maWdzOgogICAgICAtIGpvYl9uYW1lOiB2bWFnZW50CiAgICAgICAgc3RhdGljX2NvbmZpZ3M6CiAgICAgICAgICAtIHRhcmdldHM6IFsibG9jYWxob3N0Ojg0MjgiXQoKICAgICAgLSBqb2JfbmFtZTogImt1YmVybmV0ZXMtYXBpc2VydmVycyIKICAgICAgICBrdWJlcm5ldGVzX3NkX2NvbmZpZ3M6CiAgICAgICAgICAtIHJvbGU6IGVuZHBvaW50cwogICAgICAgIHNjaGVtZTogaHR0cHMKICAgICAgICB0bHNfY29uZmlnOgogICAgICAgICAgY2FfZmlsZTogL3Zhci9ydW4vc2VjcmV0cy9rdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L2NhLmNydAogICAgICAgICAgaW5zZWN1cmVfc2tpcF92ZXJpZnk6IHRydWUKICAgICAgICBiZWFyZXJfdG9rZW5fZmlsZTogL3Zhci9ydW4vc2VjcmV0cy9rdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3Rva2VuCiAgICAgICAgcmVsYWJlbF9jb25maWdzOgogICAgICAgICAgLSBzb3VyY2VfbGFiZWxzOgogICAgICAgICAgICAgIFsKICAgICAgICAgICAgICAgIF9fbWV0YV9rdWJlcm5ldGVzX25hbWVzcGFjZSwKICAgICAgICAgICAgICAgIF9fbWV0YV9rdWJlcm5ldGVzX3NlcnZpY2VfbmFtZSwKICAgICAgICAgICAgICAgIF9fbWV0YV9rdWJlcm5ldGVzX2VuZHBvaW50X3BvcnRfbmFtZSwKICAgICAgICAgICAgICBdCiAgICAgICAgICAgIGFjdGlvbjoga2VlcAogICAgICAgICAgICByZWdleDogZGVmYXVsdDtrdWJlcm5ldGVzO2h0dHBzCiAgICAgIC0gam9iX25hbWU6ICJrdWJlcm5ldGVzLW5vZGVzIgogICAgICAgIHNjaGVtZTogaHR0cHMKICAgICAgICB0bHNfY29uZmlnOgogICAgICAgICAgY2FfZmlsZTogL3Zhci9ydW4vc2VjcmV0cy9rdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L2NhLmNydAoKICAgICAgICAgIGluc2VjdXJlX3NraXBfdmVyaWZ5OiB0cnVlCiAgICAgICAgYmVhcmVyX3Rva2VuX2ZpbGU6IC92YXIvcnVuL3NlY3JldHMva3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC90b2tlbgogICAgICAgIGt1YmVybmV0ZXNfc2RfY29uZmlnczoKICAgICAgICAgIC0gcm9sZTogbm9kZQogICAgICAgIHJlbGFiZWxfY29uZmlnczoKICAgICAgICAgIC0gYWN0aW9uOiBsYWJlbG1hcAogICAgICAgICAgICByZWdleDogX19tZXRhX2t1YmVybmV0ZXNfbm9kZV9sYWJlbF8oLispCiAgICAgICAgICAtIHRhcmdldF9sYWJlbDogX19hZGRyZXNzX18KICAgICAgICAgICAgcmVwbGFjZW1lbnQ6IGt1YmVybmV0ZXMuZGVmYXVsdC5zdmM6NDQzCiAgICAgICAgICAtIHNvdXJjZV9sYWJlbHM6IFtfX21ldGFfa3ViZXJuZXRlc19ub2RlX25hbWVdCiAgICAgICAgICAgIHJlZ2V4OiAoLispCiAgICAgICAgICAgIHRhcmdldF9sYWJlbDogX19tZXRyaWNzX3BhdGhfXwogICAgICAgICAgICByZXBsYWNlbWVudDogL2FwaS92MS9ub2Rlcy8kMS9wcm94eS9tZXRyaWNzCg==
+```
+
+Deploy
 ``` 
 apiVersion: v1 
 kind: PersistentVolumeClaim 
@@ -228,21 +243,6 @@ spec:
       labels:
         app: victoria-metrics
     spec:
-      tolerations:
-        - key: "type"
-          operator: "Equal"
-          value: "lane"
-          effect: "NoSchedule"
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: "observability"
-                operator: In
-                values:
-                - "true"
-
       containers:
         - name: vm
           image: victoriametrics/victoria-metrics:v1.79.8
@@ -257,12 +257,16 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/victoria-metrics-data
               name: storage
-            - mountPath: "/etc/prometheus"
+            - mountPath: "/etc/prometheus/"
               name: prometheus-config
+              readOnly: true
       volumes:
         - name: prometheus-config
-          configMap:
-            name: prometheus-config
+          secret:
+            secretName: vm-agent-target
+            items:
+            - key: "prometheus.yaml"
+              path: "prometheus.yaml"
         - name: storage
           persistentVolumeClaim:
             claimName: victoria-metrics-data
@@ -279,6 +283,20 @@ spec:
   selector:
     app: victoria-metrics
 ```
+**配置热加载**
+
+当修改采集配置后可通过发送`Post`请求来热加载配置文件
+```
+curl -X POST http://192.168.1.190:31425/-/reload
+```
+
+**UI**
+
+VM的UI也提供了像`Prometheus`那种很丰富的查询功能；
+
+![img_2.png](img_2.png)
+
+---
 ### 集群模式部署
 VM集群服务间请求方式
 - 查询：http://vmselect-vmcluster:8481/select/0/prometheus/
