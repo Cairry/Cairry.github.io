@@ -21,7 +21,7 @@ features:
   - title: 多租户
     details: 允许多个组织共享相同的应用程序实例，同时保持各自数据的隔离性和安全性。
   - title: 云原生
-    details: 支持接入Prometheus、VictoriaMetrics、CloudWatch、Loki、Jaeger、AliCloud SLS等多种数据源；
+    details: 支持接入Prometheus、VictoriaMetrics、CloudWatch、Loki、Jaeger、AliCloud SLS、KubernetesEvent、ElasticSearch等多种数据源；
   - title: 开箱即用
     details: 支持Docker、Kubernetes、二进制等多种部署方式，内置常见中间件告警规则模版；
   - title: 专业告警

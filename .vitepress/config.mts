@@ -165,7 +165,7 @@ export default defineConfig({
 
         footer: {
             message: 'Released under the GPL License.',
-            copyright: '京ICP备2023000596号-2 Copyright © ' + new Date().getFullYear().toString() + ' By Cairry'
+            copyright: 'Copyright © ' + new Date().getFullYear().toString() + ' By Cairry'
         },
 
 

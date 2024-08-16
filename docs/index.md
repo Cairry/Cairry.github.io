@@ -36,7 +36,7 @@ WatchAlert 是基于Go+React开发的监控告警管理平台。可以完全替�
 - 支持针对不同用户设置不同租户的权限。
 
 数据源支持
-- 支持Prometheus、阿里云SLS、Loki、Jaeger、AWS CloudWatch、KubernetesEvent等多种数据源，满足用户多样化的监控需求。
+- 支持Prometheus、阿里云SLS、Loki、Jaeger、AWS CloudWatch、KubernetesEvent、ElasticSearch等多种数据源，满足用户多样化的监控需求。
 
 日志审计
 - 操作行为记录：记录重要的操作行为，便于后续审计和追溯。
