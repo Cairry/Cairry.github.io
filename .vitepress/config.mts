@@ -94,8 +94,15 @@ export default defineConfig({
                             text: '实战开发',
                             link: '/docs/Exporter/start.md'
                         },
+
+                    ]
+                },
+                {
+                    text: 'Monitor',
+                    collapsed: true,
+                    items: [
                         {
-                            text: '常用监控',
+                            text: '基础架构监控',
                             collapsed: true,
                             items: [
                                 {
@@ -136,6 +143,10 @@ export default defineConfig({
                                 },
                             ]
                         },
+                        {
+                            text: '业务指标监控',
+                            link: '/docs/Monitor/business/index.md'
+                        }
                     ]
                 }
             ]
