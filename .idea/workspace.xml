@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Monitor/business/dashboard.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Monitor/business/img/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Monitor/business/img/img_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Monitor/business/img/img_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Monitor/business/img/img_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Monitor/business/img/img_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Monitor/business/index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vitepress/config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/config.mts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +106,7 @@
       <workItem from="1722925396256" duration="2532000" />
       <workItem from="1723173067868" duration="1046000" />
       <workItem from="1723426668494" duration="5494000" />
-      <workItem from="1724205599062" duration="9549000" />
+      <workItem from="1724205599062" duration="10927000" />
     </task>
     <servers />
   </component>

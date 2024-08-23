@@ -463,3 +463,11 @@ vmagent-vmagent-cf9bbdbb4-tm4w9                                2/2     Running  
 - https://docs.victoriametrics.com/
 - https://www.qikqiak.com/post/victoriametrics-usage/#%E6%9B%BF%E6%8D%A2-prometheus
 
+## VMStorage 存储规划
+
+### 计算公式
+磁盘用量(bytes) = 瞬时指标量[m] x 单个数据点大小 x 60 x 24 x 存储时间（天)
+
+瞬时存储的指标量：`max(increase(vm_rows{}[1m]))`
+
+单个数据点大小：`sum(vm_data_size_bytes{}) / sum(vm_rows{})`
