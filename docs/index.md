@@ -13,6 +13,7 @@ WatchAlert 是基于Go+React开发的监控告警管理平台。可以完全替�
 ## 技术栈
 
 - Go ([https://go.dev](https://go.dev)) Build simple, secure, scalable systems with Go
+- Redis ([https://redis.io/](https://redis.io/)) Redis是最流行的鍵值對儲存資料庫
 - MySQL ([https://www.mysql.com](https://www.mysql.com)) 全球广受欢迎的开源数据库
 - Gorm ([http://gorm.io](http://gorm.io)) 最好用的 Go 语言数据库 ORM 框架
 - React （[https://vuejs.org](https://vuejs.org)）一個自由及開放原始碼的前端JavaScript工具庫
@@ -23,6 +24,9 @@ WatchAlert 是基于Go+React开发的监控告警管理平台。可以完全替�
 - 告警抑制：具备告警抑制功能，可以根据当前告警配置的规则进行告警静默，减少不必要的告警干扰。    
 - 告警推送：支持多种通知类型，包括飞书（支持官方高级消息卡片Json）、钉钉、企业微信、Email邮件等，用户可以配置实际通知模板，实现告警信息的即时推送。
 - 当前告警与历史告警查询：用户可以查询当前时间触发的告警列表以及已恢复的历史告警信息。
+
+证书监控
+- 对SSL证书的状态、有效性和安全性进行持续监测的过程。通过证书监控，组织能够及时发现和处理潜在的证书问题，如过期证书，确保其网络通信的安全性和可靠性；
 
 规则模版与通知模板
 - 规则模版：内置一些常用的告警规则配置，方便用户快速部署和使用。    
