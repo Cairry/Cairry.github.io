@@ -84,7 +84,7 @@ data:
                cpu: 100m
                memory: 100M
 
-           livelinessProbe:
+           livenessProbe:
              failureThreshold: 3
              httpGet:
                path: /hello
@@ -145,12 +145,8 @@ data:
          - name: watchalert-web
            image: docker.io/cairry/watchalert-web:latest
            imagePullPolicy: IfNotPresent
-           command: [ "/bin/sh","-c" ]
-           args:
-             - |
-               REACT_APP_BACKEND_PORT=30901 yarn start
            ports:
-             - containerPort: 3000
+             - containerPort: 80
                name: http
                protocol: TCP
 
@@ -161,6 +157,23 @@ data:
              requests:
                cpu: 100m
                memory: 100M
+
+           volumeMounts:
+             - mountPath: /etc/nginx/conf.d/w8t.conf
+               name: nginx-config
+               subPath: w8t.conf
+             - mountPath: /etc/localtime
+               name: host-time
+
+       volumes:
+         - configMap:
+             defaultMode: 420
+             name: watchalert
+           name: nginx-config
+         - hostPath:
+             path: /etc/localtime
+             type: ""
+           name: host-time
 ```
 
 ## Service
