@@ -44,9 +44,9 @@ Prometheus服务过程大概是这样:
 - Alertmanager是独立于Prometheus的一个组件，可以支持Prometheus的查询语句，提供十分灵活的报警方式。
 
 ## 部署
-> 本次以Docker-Compose方式部署
 
-### Prometheus Server
+### Docker-Compsose
+#### Prometheus Server
 目录结构
 ``` 
 [root@jsdesign01 prometheus]# mkdir -p /opt/apps/monitoring/prometheus/{data,rules}
@@ -142,7 +142,7 @@ groups:
       description: "节点: {{ $labels.instance }} Exporter程序异常 请及时处理！." # 自定义具体描述
 ```
 
-### Node Exporter
+#### Node Exporter
 **目录结构**
 
 ```
@@ -169,6 +169,143 @@ services:
       - "/sys:/host/sys:ro"
       - "/:/rootfs:ro"
       - /etc/localtime:/etc/localtime
+```
+
+### Kubernetes 
+安全认证
+> 用于通过k8s自动发现来监控pod、node等相关指标。
+``` 
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: monitor
+  name: prometheus
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    namespace: monitor
+    name: prometheus
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: prometheus
+  namespace: monitor
+  annotations:
+    kubernetes.io/service-account.name: "prometheus"
+type: kubernetes.io/service-account-token
+```
+服务配置
+``` 
+apiVersion: v1
+kind: "Service"
+metadata:
+  name: prometheus
+  namespace: monitor
+  labels:
+    name: prometheus
+spec:
+  ports:
+  - name: prometheus
+    protocol: TCP
+    nodePort: 30909
+    port: 9090
+    targetPort: 9090
+  selector:
+    app: prometheus
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: prometheus
+  name: prometheus
+  namespace: monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+
+    spec:
+      serviceAccountName: prometheus
+      serviceAccount: prometheus
+
+      tolerations:
+      - key: "proxy"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+
+      nodeSelector:
+        dedicated: monitor
+
+      containers:
+      - name: prometheus
+        image: bitnami/prometheus:2.46.0
+        securityContext:
+          runAsUser: 0
+        args:
+        - "--web.enable-admin-api"
+        - "--web.enable-lifecycle"
+        - "--config.file=/etc/prometheus/prometheus.yml"
+        - "--web.enable-remote-write-receiver"
+        - "--storage.tsdb.retention=14d"
+
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+        volumeMounts:
+        - mountPath: "/etc/prometheus"
+          name: prometheus-config
+        - mountPath: "/prometheus"
+          name: data
+
+      volumes:
+      - name: data
+        hostPath:
+          path: /data/prometheus
+          type: DirectoryOrCreate
+
+      - name: prometheus-config
+        configMap:
+          name: prometheus-config
+```
+端点配置
+``` 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitor
+data:
+  prometheus.yml: |-
+    scrape_configs:
+
+    - job_name: 'kubernetes-kubelets'
+      kubernetes_sd_configs:
+        - role: node
+      relabel_configs:
+        - source_labels: [__address__]
+          regex: '(.*):10250'
+          replacement: '${1}:9100'
+          target_label: __address__
+          action: replace
+        - action: labelmap
+          regex: __meta_kubernetes_node_label_(.+)
 ```
 
 ## 远端存储
