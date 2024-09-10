@@ -471,3 +471,19 @@ vmagent-vmagent-cf9bbdbb4-tm4w9                                2/2     Running  
 瞬时存储的指标量：`max(increase(vm_rows{}[1m]))`
 
 单个数据点大小：`sum(vm_data_size_bytes{}) / sum(vm_rows{})`
+
+## 最佳实践配置
+### 问题：指标量过高导致VmAgent OOM
+默认情况下，`vmagent`解析来自抓取目标的完整响应，应用重新标记，然后将生成的指标一次性推送到存储中。当抓取目标公开少量指标（例如少于 10K）时，此模式在大多数情况下效果很好。但是，当抓取目标公开大量指标时（例如，在大型`Kubernetes`集群中`vmagent`抓取时`kube-state-metrics`），此模式可能会占用大量内存。建议为此类目标启用流解析模式。启用此模式后，`vmagent`将分块处理来自抓取目标的响应。这可以在抓取公开数百万个指标的目标时节省内存。
+``` 
+scrape_configs:
+- job_name: 'big-federate'
+  stream_parse: true    // 再较大的指标Job中添加此配置
+  static_configs:
+  - targets:
+    - big-prometheus1
+    - big-prometheus2
+  metrics_path: /federate
+  params:
+    'match[]': ['{__name__!=""}']
+```
