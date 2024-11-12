@@ -16,7 +16,7 @@ WatchAlert 是基于Go+React开发的监控告警管理平台。可以完全替�
 - Redis ([https://redis.io/](https://redis.io/)) Redis是最流行的鍵值對儲存資料庫
 - MySQL ([https://www.mysql.com](https://www.mysql.com)) 全球广受欢迎的开源数据库
 - Gorm ([http://gorm.io](http://gorm.io)) 最好用的 Go 语言数据库 ORM 框架
-- React （[https://vuejs.org](https://vuejs.org)）一個自由及開放原始碼的前端JavaScript工具庫
+- React （[https://zh-hans.react.dev](https://vuejs.org)）一個自由及開放原始碼的前端JavaScript工具庫
 
 ## 功能介绍
 告警管理
