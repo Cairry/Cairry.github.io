@@ -42,6 +42,16 @@ export default defineConfig({
                     ]
                 },
                 {
+                    text: '快速开始',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '配置Demo告警',
+                            link: '/docs/Guide/test.md'
+                        }
+                    ]
+                },
+                {
                     text: 'Prometheus',
                     collapsed: true,
                     items: [

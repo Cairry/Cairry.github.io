@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/img_9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Guide/test.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/install/img/img.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/install/docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/install/docker.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vitepress/config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/config.mts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,11 +59,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/Guide/img" />
       <recent name="$PROJECT_DIR$/docs/install/img" />
       <recent name="$PROJECT_DIR$/docs/Monitor/business/img" />
       <recent name="$PROJECT_DIR$/docs/Exporter/img" />
       <recent name="$PROJECT_DIR$/docs/Exporter" />
-      <recent name="$PROJECT_DIR$/docs/WatchAlert/MonitoringAnalysis/img" />
     </key>
   </component>
   <component name="RunManager">
@@ -132,7 +113,7 @@
       <workItem from="1725940819620" duration="1669000" />
       <workItem from="1727406864309" duration="118000" />
       <workItem from="1731379356064" duration="2132000" />
-      <workItem from="1732705455908" duration="2031000" />
+      <workItem from="1732705455908" duration="2178000" />
     </task>
     <servers />
   </component>
