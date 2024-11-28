@@ -25,3 +25,8 @@ w8t-web       /bin/sh -c REACT_APP_BACKE ...   Up      0.0.0.0:80->3000/tcp
 
 ⚠️ 注意：
 - docker-compose.yaml 中有init容器，当我们初次启动成功后，可以移除init重启，避免重复导入数据。
+
+## 访问项目
+- 登陆页初始化`admin`密码.
+
+![img.png](img/login.png)
