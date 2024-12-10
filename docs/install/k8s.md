@@ -4,223 +4,35 @@
 在安装之前请确保您已经存在`Kubernetes`集群；
 :::
 
-安装步骤如下
+## 安装步骤如下
+### 克隆项目
+- 有网络条件的可以直接`Clone`。
+- 没有网络条件可以下载`ZIP`包，导入到服务器上。
+  ![img.png](img/img.png)
 
-## ConfigMap
-> cm.yaml
-```yaml 
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: watchalert
-  namespace: default
-data:
-  config.yaml: |
-    Server:
-      port: "9001"
-      # 定义相同的Group之间发送告警通知的时间间隔(s), 组内有告警就一起发出, 没有则单独发出.
-      # 第一次产生的告警, 等待10s（为了防止在等待期间,还没有推送告警消息期间这时告警消失了触发了恢复消息）
-      groupWait: 10
-      # 第二次产生的告警, 等待120s（为了保证告警聚合性相同时间段的告警一起发送）
-      groupInterval: 120
-      # 告警恢复等待时间，1m（为了防止在告警触发恢复后紧接着再次触发告警条件）
-      recoverWait: 1
-
-    MySQL:
-      host: 127.0.0.1
-      port: 3306
-      user: root
-      pass: semaik1023
-      dbName: watchalert
-      timeout: 10s
-
-    Redis:
-      host: 127.0.0.1
-      port: 6379
-      pass: ""
-
-    Jwt:
-      # 失效时间
-      expire: 18000 
+### 进入项目目录
+``` 
+# cd WatchAlert-master/deploy/kubernetes
 ```
 
-## Deployment
-> deploy.yaml
-```yaml
- # 注意：watchalert-service 暂不支持多副本
- ---
- apiVersion: apps/v1
- kind: Deployment
- metadata:
-   labels:
-     name: watchalert-service
-   name: watchalert-service
-   namespace: default
- spec:
-   replicas: 1
-   selector:
-     matchLabels:
-       app: watchalert-service
-   template:
-     metadata:
-       labels:
-         app: watchalert-service
-
-     spec:
-       containers:
-         - name: watchalert-service
-           image: docker.io/cairry/watchalert:latest
-           imagePullPolicy: IfNotPresent
-           ports:
-             - containerPort: 9001
-               name: http
-               protocol: TCP
-
-           resources:
-             limits:
-               cpu: "1"
-               memory: 2G
-             requests:
-               cpu: 100m
-               memory: 100M
-
-           livenessProbe:
-             failureThreshold: 3
-             httpGet:
-               path: /hello
-               port: 9001
-               scheme: HTTP
-             initialDelaySeconds: 10
-             periodSeconds: 10
-             successThreshold: 1
-             timeoutSeconds: 1
-           readinessProbe:
-             failureThreshold: 1
-             httpGet:
-               path: /hello
-               port: 9001
-               scheme: HTTP
-             initialDelaySeconds: 10
-             periodSeconds: 5
-             successThreshold: 1
-             timeoutSeconds: 1
-
-           volumeMounts:
-             - mountPath: /app/config/config.yaml
-               name: config
-               subPath: config.yaml
-             - mountPath: /etc/localtime
-               name: host-time
-
-       volumes:
-         - configMap:
-             defaultMode: 420
-             name: watchalert
-           name: config
-         - hostPath:
-             path: /etc/localtime
-             type: ""
-           name: host-time
-
- ---
- apiVersion: apps/v1
- kind: Deployment
- metadata:
-   labels:
-     name: watchalert-web
-   name: watchalert-web
-   namespace: default
- spec:
-   replicas: 1
-   selector:
-     matchLabels:
-       app: watchalert-web
-   template:
-     metadata:
-       labels:
-         app: watchalert-web
-
-     spec:
-       containers:
-         - name: watchalert-web
-           image: docker.io/cairry/watchalert-web:latest
-           imagePullPolicy: IfNotPresent
-           ports:
-             - containerPort: 80
-               name: http
-               protocol: TCP
-
-           resources:
-             limits:
-               cpu: "1"
-               memory: 2G
-             requests:
-               cpu: 100m
-               memory: 100M
-
-           volumeMounts:
-             - mountPath: /etc/nginx/conf.d/w8t.conf
-               name: nginx-config
-               subPath: w8t.conf
-             - mountPath: /etc/localtime
-               name: host-time
-
-       volumes:
-         - configMap:
-             defaultMode: 420
-             name: watchalert
-           name: nginx-config
-         - hostPath:
-             path: /etc/localtime
-             type: ""
-           name: host-time
+### 创建配置
+``` 
+# kubectl create configmap w8t-config --from-file=../../config/config.yaml
+```
+``` 
+# kubectl create configmap w8t-init-config --from-file=../sql/auto_import.sh --from-file=../sql/notice_template_examples.sql --from-file=../sql/rule_template_groups.sql \
+--from-file=../sql/rule_templates.sql --from-file=../sql/tenants.sql --from-file=../sql/tenants_linked_users.sql
 ```
 
-## Service
-> svc.yaml
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: watchalert-service
-  namespace: default
-  labels:
-    name: watchalert-service
-spec:
-  ports:
-    - name: watchalert-service
-      protocol: TCP
-      port: 9001
-      targetPort: 9001
-      nodePort: 30901
-  selector:
-    app: watchalert-service
-  type: NodePort
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: watchalert-web
-  namespace: default
-  labels:
-    name: watchalert-web
-spec:
-  ports:
-    - name: watchalert-web
-      protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 30300
-  selector:
-    app: watchalert-web
-  type: NodePort
+``` 
+# kubectl apply -f mysql.yaml -f redis.yaml -f w8t-service.yaml -f w8t-web.yaml -f init-job.yaml
 ```
 
-## 一键部署
-```yaml
-kubectl apply -f ./cm.yaml -f ./deploy.yaml -f svc.yaml
-```
+⚠️ 注意：
+- init job 运行结束后请勿再次运行，以防数据重复。
 
-## 初始化数据
-- [Init SQL](https://github.com/w8t-io/WatchAlert/blob/master/deploy/sql/README.md)
+### 访问项目
+- http://${HOST}:30800（svc nodePort）
+- 登陆页初始化`admin`密码.
+
+![img.png](img/login.png)

@@ -11,7 +11,12 @@
 - 没有网络条件可以下载`ZIP`包，导入到服务器上。
 ![img.png](img/img.png)
 
-## 启动项目
+### 进入项目目录
+``` 
+# cd WatchAlert-master/deploy/docker-compose
+```
+
+### 启动项目
 ```shell
 # docker-compose -f docker-compose.yaml up -d
 # docker-compose -f docker-compose.yaml ps
@@ -26,7 +31,7 @@ w8t-web       /bin/sh -c REACT_APP_BACKE ...   Up      0.0.0.0:80->3000/tcp
 ⚠️ 注意：
 - docker-compose.yaml 中有init容器，当我们初次启动成功后，可以移除init重启，避免重复导入数据。
 
-## 访问项目
+### 访问项目
 - 登陆页初始化`admin`密码.
 
 ![img.png](img/login.png)
