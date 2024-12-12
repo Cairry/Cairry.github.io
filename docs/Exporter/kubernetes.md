@@ -10,6 +10,9 @@
 - kube-state-metrics：主要收集k8s集群内部的资源数据；
 - cadvisor(kubelet 内置)：主要收集容器运行时的指标数据；
 
+
+[Kubernetes组件监控指标](kubernetes-module.md)
+
 ## 监控范围
 
 - Namespace级别的Top资源统计；

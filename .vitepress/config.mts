@@ -89,6 +89,18 @@ export default defineConfig({
                         {
                             text: 'VictoriaMetrics',
                             link: '/docs/VictoriaMetrics/index.md'
+                        },
+                        {
+                            text: '快照功能',
+                            link: '/docs/VictoriaMetrics/snapshot.md'
+                        },
+                        {
+                            text: '配置优化',
+                            link: '/docs/VictoriaMetrics/configure.md'
+                        },
+                        {
+                            text: '常见问题',
+                            link: '/docs/VictoriaMetrics/Q&A.md'
                         }
                     ]
                 },

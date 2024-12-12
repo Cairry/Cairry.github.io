@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-module.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/Q&amp;A.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/configure.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/snapshot.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/install/docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/install/docker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/install/k8s.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/install/k8s.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vitepress/config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/config.mts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/VictoriaMetrics/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/VictoriaMetrics/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +121,7 @@
       <workItem from="1731379356064" duration="2132000" />
       <workItem from="1732705455908" duration="5925000" />
       <workItem from="1733104528356" duration="601000" />
-      <workItem from="1733214588460" duration="901000" />
+      <workItem from="1733214588460" duration="9037000" />
     </task>
     <servers />
   </component>
