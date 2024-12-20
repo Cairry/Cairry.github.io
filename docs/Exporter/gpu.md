@@ -123,6 +123,8 @@ spec:
         app.kubernetes.io/version: "2.4.0"
       name: "dcgm-exporter"
     spec:
+      runtimeClassName: nvidia
+      hostNetwork: true
       containers:
       - image: "nvcr.io/nvidia/k8s/dcgm-exporter:2.2.9-2.4.0-ubuntu18.04"
         env:
@@ -144,6 +146,9 @@ spec:
         - name: "gpu-metrics"
           readOnly: true
           mountPath: "/etc/dcgm-exporter"
+        securityContext:
+          capabilities:
+            add: ["SYS_ADMIN"]
       volumes:
       - name: "pod-gpu-resources"
         hostPath:
@@ -156,10 +161,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: worknode
+              - key: nvidia.com/gpu.present
                 operator: In
                 values:
-                - gpu
+                - "true"
 
       tolerations:
       - key: "gpu"
@@ -167,7 +172,6 @@ spec:
         effect: "NoSchedule"
         value: "yes"
         
-
 ---
 
 kind: Service
