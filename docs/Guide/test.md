@@ -14,6 +14,9 @@
 - 首先要在“用户管理”接受值班，并填写用户的UserId。
 
 ![img_4.png](img/img_4.png)
+飞书：[获取UserId方法](https://blog.csdn.net/qq_37172634/article/details/123996775)
+
+钉钉：填写手机号即可
 
 - 创建值班表
 
