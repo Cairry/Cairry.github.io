@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
     head: [['link', { rel: 'icon', href: '/public/images/favicon.ico' }]],
     title: "WatchAlert",
-    description: "智能高效的云原生监控系统！",
+    description: "轻量级云原生监控告警引擎！",
     ignoreDeadLinks: 'localhostLinks',
     lastUpdated: false,
     // base: '/w8t-docs/',

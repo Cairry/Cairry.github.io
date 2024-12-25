@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "WatchAlert"
-  text: "智能高效的云原生监控系统！"
+  text: "轻量级云原生监控告警引擎！"
   tagline: 基于 Go + React 实现
   image:
     src: /images/logo.png
