@@ -51,8 +51,6 @@ ApiServer 是 Kubernetes 集群的核心组件之一，负责处理所有与 Kub
           ]
         action: keep
         regex: default;kubernetes;https
-      - target_label: __address__
-        replacement: kubernetes.default.svc:443
 ```
 
 ### 仪表盘

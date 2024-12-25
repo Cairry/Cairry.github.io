@@ -38,8 +38,6 @@ CoreDNS 是 Kubernetes 集群中默认的 DNS 服务器，负责为集群中的�
           ]
         action: keep
         regex: kube-system;kube-dns
-      - target_label: __address__
-        replacement: kube-dns.kube-system.svc:9153
 ```
 
 ### 仪表盘

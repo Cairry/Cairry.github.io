@@ -65,8 +65,6 @@ spec:
           ]
         action: keep
         regex: kube-system;kube-scheduler
-      - target_label: __address__
-        replacement: kube-scheduler.kube-system.svc:10259
 ```
 ### 监控指标
 | 指标                     | PromQL                                                                                                                                        |

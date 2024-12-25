@@ -65,8 +65,6 @@ spec:
           ]
         action: keep
         regex: kube-system;kube-controller-manager
-      - target_label: __address__
-        replacement: kube-controller-manager.kube-system.svc:10257
 ```
 ### 监控指标
 | 指标                   | PromQL                                                                                                                                  |

@@ -71,8 +71,6 @@ spec:
           ]
         action: keep
         regex: kube-system;etcd
-      - target_label: __address__
-        replacement: etcd.kube-system.svc:2381
 ```
 
 ### 监控指标
