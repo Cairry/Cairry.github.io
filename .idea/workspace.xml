@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Dashboard/etcd.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes/etcd.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/apiserver.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/controller-manager.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/coredns.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/kube-cluster.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Dashboard/scheduler.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/apiserver.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/cluster.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/controller-manager.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/coredns.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/scheduler.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-resource/kubernetes.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Exporter/kubernetes-module.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Exporter/kubernetes.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Exporter/kubernetes/etcd.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/etcd.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +73,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/Exporter/kubernetes-resource" />
       <recent name="$PROJECT_DIR$/docs/install/img" />
       <recent name="$PROJECT_DIR$/docs/Guide/img" />
       <recent name="$PROJECT_DIR$/docs/Monitor/business/img" />
       <recent name="$PROJECT_DIR$/docs/Exporter/img" />
-      <recent name="$PROJECT_DIR$/docs/Exporter" />
     </key>
   </component>
   <component name="RunManager">
@@ -118,7 +130,7 @@
       <workItem from="1732705455908" duration="5925000" />
       <workItem from="1733104528356" duration="601000" />
       <workItem from="1733214588460" duration="15079000" />
-      <workItem from="1734510215955" duration="12053000" />
+      <workItem from="1734510215955" duration="24516000" />
     </task>
     <servers />
   </component>

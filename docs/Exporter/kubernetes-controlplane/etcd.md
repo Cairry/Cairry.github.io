@@ -1,41 +1,18 @@
 # Etcd 监控
 etcd 是一个分布式键值存储系统，广泛用于 Kubernetes 集群中，作为集群的核心数据存储组件。它负责存储 Kubernetes 的所有配置数据、状态信息和元数据。
 
-## 核心数据存储
-   etcd 是 Kubernetes 的唯一数据存储后端，存储了集群的所有关键数据，包括：
+## 核心作用
+- 存储集群配置:
 
-- 集群配置:
+    Kubernetes 的配置数据，例如 API 资源定义、RBAC 规则、网络策略等。如：Pod 的定义和状态。
 
-    Kubernetes 的配置数据，例如 API 资源定义、RBAC 规则、网络策略等。
+- 存储集群状态:
 
-- 集群状态:
+    集群中所有对象的状态信息，例如 Pod、Service、Deployment、ConfigMap、Secret 等。如：Service 的 IP 和端口信息。
 
-    集群中所有对象的状态信息，例如 Pod、Service、Deployment、ConfigMap、Secret 等。
+- 存储元数据:
 
-- 元数据:
-
-    集群的元数据，例如节点信息、资源配额、命名空间等。
-
-示例：
-- Pod 的定义和状态。
-- Service 的 IP 和端口信息。
-- Deployment 的副本数和滚动更新状态。
-
-## 与 Kubernetes 其他组件的交互
-etcd 与 Kubernetes 的其他组件紧密集成，确保集群的正常运行。
-
-**示例：**
-- kube-scheduler:
-    
-    从 etcd 中获取 Pod 和节点的信息，决定 Pod 的调度位置。
-
-- kube-controller-manager:
-
-    从 etcd 中获取集群状态，执行控制器逻辑（如副本控制器、节点控制器等）。
-
-- kubelet:
-
-    从 etcd 中获取 Pod 的定义，启动和管理容器。
+    集群的元数据，例如节点信息、资源配额、命名空间等。如：Deployment 的副本数和滚动更新状态。
 
 ## 监控
 ### 开启 Metrics 接口
