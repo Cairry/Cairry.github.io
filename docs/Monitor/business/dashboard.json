@@ -450,7 +450,7 @@
             "uid": "dd1c1bdd-894c-4866-a930-efdae80136e2"
           },
           "editorMode": "code",
-          "expr": "sort_desc(sum(rate(duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", job=~\"$app\", http_route=~\"$route\", http_status_code!=\"\"}[5m]) / duration_milliseconds_count{span_kind=\"SPAN_KIND_SERVER\", job=~\"$app\", http_route=~\"$route\", http_status_code!=\"\"}) by(http_route))",
+          "expr": "sort_desc(sum(rate(duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", job=~\"$app\", http_route=~\"$route\", http_status_code!=\"\"}[5m]) / duration_milliseconds_count{span_kind=\"SPAN_KIND_SERVER\", job=~\"$app\", http_route=~\"$route\", http_status_code!=\"\"}) by(host_name,http_route, http_method))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
