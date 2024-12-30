@@ -33,3 +33,32 @@
 - 样本速率：`0.067` 表示每个指标每秒的采样率。
 - 保留时间：`1,296,000` 秒是 `15` 天的总秒数。
 - 样本大小：`1.2` 字节是每个样本的压缩大小。
+
+## 数据获取方式
+
+**每秒抓取的样本数**
+``` 
+sum(rate(prometheus_tsdb_head_samples_appended_total[1m])) by (job)
+```
+
+**正在监控的指标数**
+``` 
+count({__name__=~".+"}) by (job)
+```
+
+**压缩后的样本大小**
+```
+rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) / rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
+```
+- 计算过去 1 小时内，`prometheus_tsdb_compaction_chunk_size_bytes_sum`压缩过程中每秒处理的块大小的增量。
+
+- 计算过去 1 小时内，`prometheus_tsdb_compaction_chunk_samples_sum`压缩过程中每秒处理的样本数量的增量。
+
+- 将两者相除，得到每个样本的平均大小。
+
+## 自身容量监控指标
+- `prometheus_tsdb_storage_blocks_bytes`：表示当前块存储的大小。
+
+- `prometheus_tsdb_head_samples_appended_total`：表示已追加的样本总数。
+
+- `prometheus_tsdb_wal_storage_size_bytes`：表示 WAL 存储的大小。
