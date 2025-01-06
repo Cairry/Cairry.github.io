@@ -242,27 +242,27 @@ spec:
 ## Prometheus 端点配置
 ``` 
     - job_name: 'kubernetes-kubelets'
+      scheme: https
+      tls_config:
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
       kubernetes_sd_configs:
         - role: node
       relabel_configs:
-        - source_labels: [__address__]
-          regex: '(.*):10250'
-          replacement: '${1}:9100'
-          target_label: __address__
-          action: replace
-        - action: labelmap
-          regex: __meta_kubernetes_node_label_(.+)
-
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      
     - job_name: 'node-process-exporter'
       kubernetes_sd_configs:
         - role: node
       relabel_configs:
-        - source_labels: [__address__]
-          regex: '(.*):10250'
-          replacement: '${1}:9002'
-          target_label: __address__
-          action: replace
-        - action: labelmap
+      - source_labels:
+          [
+            __meta_kubernetes_namespace,
+            __meta_kubernetes_service_name,
+          ]
+        action: keep
+        regex: monitoring;node-process-exporter
         
     - job_name: 'Fping'
       scrape_interval: 1m

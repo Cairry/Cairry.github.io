@@ -138,65 +138,40 @@ spec:
 ```
 ## Prometheus 端点配置
 ``` 
-- job_name: kubernetes-cadvisor
-  honor_timestamps: true
-  scrape_interval: 15s
-  scrape_timeout: 10s
-  metrics_path: /metrics
-  scheme: https
-  authorization:
-    type: Bearer
-    credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-  tls_config:
-    insecure_skip_verify: true
-  follow_redirects: true
-  enable_http2: true
-  relabel_configs:
-  - separator: ;
-    regex: (.*)
-    target_label: __address__
-    replacement: kubernetes.default.svc:443
-    action: replace
-  - source_labels: [__meta_kubernetes_node_name]
-    separator: ;
-    regex: (.+)
-    target_label: __metrics_path__
-    replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
-    action: replace
-  - separator: ;
-    regex: __meta_kubernetes_node_label_(.+)
-    replacement: $1
-    action: labelmap
-  kubernetes_sd_configs:
-  - role: node
-    kubeconfig_file: ""
-    follow_redirects: true
-    enable_http2: true
+    - job_name: kubernetes-cadvisor
+      scheme: https
+      tls_config:
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      kubernetes_sd_configs:
+        - role: node
+      relabel_configs:
+        - target_label: __address__
+          replacement: kubernetes.default.svc:443
+        - source_labels: [__meta_kubernetes_node_name]
+          regex: (.+)
+          target_label: __metrics_path__
+          replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+        - action: labelmap
+          regex: __meta_kubernetes_node_label_(.+)
     
-- job_name: kubernetes-kube-state-metrics
-  honor_timestamps: true
-  scrape_interval: 15s
-  scrape_timeout: 10s
-  metrics_path: /metrics
-  scheme: http
-  follow_redirects: true
-  enable_http2: true
-  relabel_configs:
-  - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name]
-    separator: ;
-    regex: kube-state-metrics
-    replacement: $1
-    action: keep
-  - source_labels: [__address__]
-    separator: ;
-    regex: (.*):8080
-    replacement: $1
-    action: keep
-  kubernetes_sd_configs:
-  - role: endpoints
-    kubeconfig_file: ""
-    follow_redirects: true
-    enable_http2: true
+    - job_name: kubernetes-kube-state-metrics
+      kubernetes_sd_configs:
+      - role: endpoints
+      scrape_interval: 1m
+      honor_timestamps: true
+      metrics_path: /metrics
+      scheme: http
+      tls_config:
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+        - source_labels: [
+            __meta_kubernetes_namespace,
+            __meta_kubernetes_service_name,
+          ]
+          action: keep
+          regex: monitoring;kube-state-metrics
 ```
 
 ## 监控大盘

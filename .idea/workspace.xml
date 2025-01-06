@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Prometheus/storage.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Prometheus/storage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Exporter/kubernetes-resource/kubernetes.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-resource/kubernetes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Exporter/node.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/node.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +118,10 @@
       <workItem from="1732705455908" duration="5925000" />
       <workItem from="1733104528356" duration="601000" />
       <workItem from="1733214588460" duration="15079000" />
-      <workItem from="1734510215955" duration="32177000" />
+      <workItem from="1734510215955" duration="33749000" />
+      <workItem from="1735780972601" duration="65000" />
+      <workItem from="1735786500415" duration="17000" />
+      <workItem from="1736148465193" duration="1427000" />
     </task>
     <servers />
   </component>
