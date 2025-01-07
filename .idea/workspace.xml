@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/cluster.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/kubernetes-controlplane/cluster.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Exporter/node.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/node.md" afterDir="false" />
-    </list>
+    <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +117,7 @@
       <workItem from="1734510215955" duration="33749000" />
       <workItem from="1735780972601" duration="65000" />
       <workItem from="1735786500415" duration="17000" />
-      <workItem from="1736148465193" duration="7837000" />
+      <workItem from="1736148465193" duration="8262000" />
     </task>
     <servers />
   </component>

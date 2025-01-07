@@ -75,6 +75,7 @@ spec:
           name: rootfs
         - mountPath: /data
           name: rootfs-data
+          readOnly: true
       dnsPolicy: ClusterFirst
       hostIPC: true
       hostNetwork: true
