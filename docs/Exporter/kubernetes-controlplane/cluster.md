@@ -36,5 +36,24 @@
 | Kubelet GET 请求QPS| rate(sum(kubelet_http_requests_total{method="GET"}) by (instance)[1m]) |
 | Kubelet POST 请求QPS| rate(sum(kubelet_http_requests_total{method="POST"}) by (instance)[1m]) |
 
+``` 
+    - job_name: 'kubernetes-kubelets'
+      scheme: https
+      tls_config:
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      kubernetes_sd_configs:
+        - role: node
+      relabel_configs:
+        - action: labelmap
+          regex: __meta_kubernetes_node_label_(.+)
+        - source_labels: [__meta_kubernetes_node_name]
+          regex: (.+)
+          target_label: __metrics_path__
+          replacement: /api/v1/nodes/${1}/proxy/metrics
+        - target_label: __address__
+          replacement: kubernetes.default.svc:443
+```
+
 ### 仪表盘
 [Dashboard File](../../Dashboard/kube-cluster.json)

@@ -30,18 +30,18 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
-    name: prom-node-exporter
-  name: prom-node-exporter
-  namespace: monitor
+    name: node-exporter
+  name: node-exporter
+  namespace: monitoring
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      name: prom-node-exporter
+      name: node-exporter
   template:
     metadata:
       labels:
-        name: prom-node-exporter
+        name: node-exporter
     spec:
       containers:
       - args:
@@ -121,16 +121,16 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: prom-node-exporter
-  name: prom-node-exporter
-  namespace: monitor
+    name: node-exporter
+  name: node-exporter
+  namespace: monitoring
 spec:
   ports:
   - port: 9100
     protocol: TCP
     targetPort: 9100
   selector:
-    name: prom-node-exporter
+    name: node-exporter
   sessionAffinity: None
   type: ClusterIP
 ```
@@ -144,7 +144,7 @@ metadata:
   labels:
     app: node-process-exporter
   name: node-process-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   selector:
     matchLabels:
@@ -185,7 +185,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: node-process-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   ports:
   - port: 9002
@@ -203,7 +203,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fping-exporter
-  namespace: monitor
+  namespace: monitoring
   labels:
     app: fping-exporter
 spec:
@@ -226,7 +226,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fping-exporter
-  namespace: monitor
+  namespace: monitoring
   labels:
     app: fping-exporter
 spec:
@@ -241,27 +241,34 @@ spec:
 
 ## Prometheus 端点配置
 ``` 
-    - job_name: 'kubernetes-kubelets'
-      scheme: https
-      tls_config:
-        insecure_skip_verify: true
-      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    - job_name: 'node-exporter'
       kubernetes_sd_configs:
-        - role: node
+        - role: endpoints
       relabel_configs:
-        - action: labelmap
-          regex: __meta_kubernetes_node_label_(.+)
-        - target_label: __address__
-          replacement: kubernetes.default.svc:443
-        - source_labels: [__meta_kubernetes_node_name]
-          regex: (.+)
-          target_label: __metrics_path__
-          replacement: /api/v1/nodes/${1}/proxy/metrics
+      - source_labels: [__address__]
+        regex: '(.*):\d+'
+        target_label: instance
+        replacement: $1
+        action: replace
+
+      - source_labels:
+          [
+            __meta_kubernetes_namespace,
+            __meta_kubernetes_service_name,
+          ]
+        action: keep
+        regex: monitoring;node-exporter
       
     - job_name: 'node-process-exporter'
       kubernetes_sd_configs:
-        - role: node
+        - role: endpoints
       relabel_configs:
+      - source_labels: [__address__]
+        regex: '(.*):\d+'
+        target_label: instance
+        replacement: $1
+        action: replace
+
       - source_labels:
           [
             __meta_kubernetes_namespace,
@@ -272,20 +279,21 @@ spec:
         
     - job_name: 'Fping'
       scrape_interval: 1m
-      static_configs:
-        - targets:
-          - 114.114.114.114
       metrics_path: /probe
+      kubernetes_sd_configs:
+        - role: node
       relabel_configs:
-        - source_labels: [__address__]
+        - action: labelmap
+          regex: __meta_kubernetes_node_label_(.+)
+        - source_labels: [__meta_kubernetes_node_address_InternalIP]
           target_label: __param_target
+          action: replace
         - source_labels: [__param_target]
-          separator: ;
           target_label: instance
-          replacement: ${1}:${2}
           action: replace
         - target_label: __address__
-          replacement: fping-exporter.kube-monitoring:9605
+          replacement: fping-exporter.monitoring:9605
+          action: replace
 ```
 
 ## 监控大盘
