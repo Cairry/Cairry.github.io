@@ -30,7 +30,7 @@ metadata:
   labels:
     app: rocketmq-exporter
   name: rocketmq-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
@@ -59,7 +59,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rocketmq-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   ports:
     - port: 5557
@@ -73,10 +73,16 @@ spec:
 ## Prometheus 端点配置
 ``` 
     - job_name: 'RocketMQ'
-      scrape_interval: 1m
-      static_configs:
-        - targets: 
-          - rocketmq-exporter.monitor:5557
+      kubernetes_sd_configs:
+        - role: endpoints
+      relabel_configs:
+      - source_labels:
+          [
+            __meta_kubernetes_namespace,
+            __meta_kubernetes_service_name,
+          ]
+        action: keep
+        regex: monitoring;rocketmq-exporter
 ```
 
 ## 监控大盘

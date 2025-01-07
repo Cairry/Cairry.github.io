@@ -163,6 +163,10 @@ export default defineConfig({
                                     text: 'Nginx 资源监控',
                                     link: '/docs/Exporter/nginx.md'
                                 },
+                                {
+                                    text: 'Kafka 资源监控',
+                                    link: '/docs/Exporter/kafka.md'
+                                },
                             ]
                         },
                         {

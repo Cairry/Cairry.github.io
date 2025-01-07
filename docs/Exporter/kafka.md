@@ -41,7 +41,7 @@ metadata:
     app.kubernetes.io/instance: kafka
     app.kubernetes.io/name: kafka
   name: kafka-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
@@ -97,7 +97,7 @@ metadata:
     app.kubernetes.io/instance: kafka
     app.kubernetes.io/name: kafka
   name: kafka-metrics
-  namespace: monitor
+  namespace: monitoring
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -117,10 +117,16 @@ spec:
 ## Prometheus 端点配置
 ``` 
     - job_name: 'Kafka'
-      scrape_interval: 1m
-      static_configs:
-        - targets: 
-          - kafka-exporter.monitor:5557
+      kubernetes_sd_configs:
+        - role: endpoints
+      relabel_configs:
+      - source_labels:
+          [
+            __meta_kubernetes_namespace,
+            __meta_kubernetes_service_name,
+          ]
+        action: keep
+        regex: monitoring;kafka-metrics
 ```
 
 ## 监控大盘

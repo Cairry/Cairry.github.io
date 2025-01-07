@@ -21,14 +21,14 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 12326,
   "graphTooltip": 0,
-  "id": 247,
+  "id": 391,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -115,13 +115,15 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
-          "expr": "sum(rate(kafka_topic_partition_current_offset{instance=\"$instance\", topic=~\"$topic\"}[1m])) by (topic)",
+          "editorMode": "code",
+          "expr": "sum(rate(kafka_topic_partition_current_offset{instance=\"$instance\",topic=~\"$topic\"}[1m])) by (topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{topic}}",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -131,7 +133,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -218,8 +220,9 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
+          "editorMode": "code",
           "expr": "sum(kafka_consumergroup_lag{instance=\"$instance\",topic=~\"$topic\"}) by (consumergroup, topic) ",
           "format": "time_series",
           "instant": false,
@@ -235,7 +238,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -321,7 +324,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(increase(kafka_topic_partition_current_offset{instance=~'$instance', topic=~\"$topic\"}[5m])/5) by (topic)",
@@ -338,7 +341,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -424,7 +427,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(delta(kafka_consumergroup_current_offset{instance=~'$instance',topic=~\"$topic\"}[5m])/5) by (consumergroup, topic)",
@@ -441,7 +444,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -519,7 +522,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(increase(kafka_topic_partition_current_offset[5m])) by(topic) - sum(increase(kafka_consumergroup_current_offset[5m])) by(topic) > 0",
@@ -534,7 +537,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -615,7 +618,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum by(topic) (kafka_topic_partitions{instance=\"$instance\",topic=~\"$topic\"})",
@@ -635,9 +638,31 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "Tencent-GEES-Prod-VictoriaMetrics",
+          "value": "d2fd3de9-1e3f-419b-b1be-06768d59f0ab"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "Tencent-GEES-Prod-VictoriaMetrics",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Tencent-Prod-Gees-kafka-exporter",
+          "value": "Tencent-Prod-Gees-kafka-exporter"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+          "uid": "${datasource}"
         },
         "definition": "label_values(kafka_consumergroup_current_offset, job)",
         "hide": 2,
@@ -657,18 +682,26 @@
         "useTags": false
       },
       {
+        "current": {
+          "selected": false,
+          "text": "10.70.64.109:9308",
+          "value": "10.70.64.109:9308"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+          "uid": "${datasource}"
         },
-        "definition": "",
-        "hide": 0,
+        "definition": "label_values(kafka_brokers,instance)",
+        "hide": 2,
         "includeAll": false,
         "label": "采集器",
         "multi": false,
         "name": "instance",
         "options": [],
-        "query": "label_values(kafka_consumergroup_current_offset{job=~\"$job\"}, instance)",
+        "query": {
+          "query": "label_values(kafka_brokers,instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -680,22 +713,29 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+          "uid": "${datasource}"
         },
-        "definition": "",
+        "definition": "label_values(kafka_topic_partition_current_offset,topic)",
         "hide": 0,
         "includeAll": true,
         "label": "Topic",
         "multi": true,
         "name": "topic",
         "options": [],
-        "query": "label_values(kafka_topic_partition_current_offset{instance='$instance',topic!='__consumer_offsets',topic!='--kafka'}, topic)",
+        "query": {
+          "query": "label_values(kafka_topic_partition_current_offset,topic)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -734,8 +774,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "AliCloud-Prod-Kafka",
-  "uid": "AliCloud-Prod-Kafka",
-  "version": 8,
+  "title": "Tencent-Gees-Prod-Kafka",
+  "uid": "Tencent-Gees-Prod-Kafka",
+  "version": 5,
   "weekStart": ""
 }
