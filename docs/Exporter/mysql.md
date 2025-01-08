@@ -55,12 +55,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mysql-exporter
-  namespace: kube-monitoring
+  namespace: monitoring
 data:
   my.cnf: |-
     [client]
-    host=mariadb-test-mariadb-galera.infra
-    port=3306
     user=exporter
     password=exporter_2024
 
@@ -69,7 +67,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-exporter
-  namespace: kube-monitoring
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
@@ -82,7 +80,7 @@ spec:
     spec:
       containers:
         - name: mysql-exporter
-          image: registry.js.design/prometheus/mysqld-exporter:latest
+          image: prom/mysqld-exporter:v0.16.0
           ports:
             - name: metrics
               containerPort: 9104
@@ -104,7 +102,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-exporter
-  namespace: kube-monitoring
+  namespace: monitoring
 spec:
   ports:
     - port: 9104
@@ -127,10 +125,20 @@ mysql_up 1
 ## Prometheus 端点配置
 ``` 
     - job_name: 'MySQL'
-      scrape_interval: 1m
       static_configs:
-        - targets: ['mysql-exporter.monitor:9104']
+        - targets:
+          - mysql1.com:3306
+          - mysql2.com:3306
+      relabel_configs:
+        - source_labels: [__address__]
+          target_label: __param_target
+        - source_labels: [__param_target]
+          target_label: instance
+          action: replace
+        - target_label: __address__
+          replacement: mysql-exporter.monitoring:9104
 ```
+
 
 ## 监控大盘
 

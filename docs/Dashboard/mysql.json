@@ -20,14 +20,14 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 12826,
   "graphTooltip": 0,
-  "id": 223,
+  "id": 402,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -91,7 +91,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "max(mysql_global_status_uptime)/86400",
@@ -110,7 +110,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "gridPos": {
         "h": 1,
@@ -124,7 +124,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "refId": "A"
         }
@@ -139,7 +139,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -186,7 +186,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "max(irate(mysql_global_status_connections{instance=~\"^$Server$\"}[1m]))",
@@ -235,7 +235,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -282,7 +282,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(mysql_global_status_threads_connected{instance=~\"^$Server$\"})",
@@ -294,7 +294,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(mysql_global_status_threads_running{instance=~\"^$Server$\"})",
@@ -338,7 +338,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -417,7 +417,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "rate(mysql_global_status_innodb_data_reads[5m]) * 16384\n",
@@ -428,7 +428,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "rate(mysql_global_status_innodb_data_writes[5m]) * 16384",
@@ -449,7 +449,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -496,7 +496,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_bytes_sent{instance=~\"^$Server$\"}[1m]))",
@@ -508,7 +508,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_bytes_received{instance=~\"^$Server$\"}[1m]))",
@@ -556,7 +556,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -603,7 +603,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_queries{instance=~\"^$Server$\"}[1m]))",
@@ -651,7 +651,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -698,7 +698,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_slow_queries{instance=~\"^$Server$\"}[1m]))",
@@ -742,7 +742,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -820,7 +820,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(mysql_global_status_innodb_data_fsyncs[5m])",
@@ -839,7 +839,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -886,7 +886,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_table_locks_immediate{instance=~\"^$Server$\"}[1m]))",
@@ -898,7 +898,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_table_locks_waited{instance=~\"^$Server$\"}[1m]))",
@@ -945,7 +945,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -992,7 +992,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_created_tmp_tables{instance=~\"^$Server$\"}[1m]))",
@@ -1004,7 +1004,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_created_tmp_disk_tables{instance=~\"^$Server$\"}[1m]))",
@@ -1016,7 +1016,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_created_tmp_files{instance=~\"^$Server$\"}[1m]))",
@@ -1060,7 +1060,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "gridPos": {
         "h": 1,
@@ -1074,7 +1074,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "refId": "A"
         }
@@ -1085,7 +1085,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1128,8 +1128,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1164,7 +1163,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "(mysql_global_status_innodb_buffer_pool_bytes_data / mysql_global_variables_innodb_buffer_pool_size) * 100",
@@ -1183,7 +1182,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1231,7 +1230,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_system_rows_read{instance=~\"^$Server$\"}[1m]))",
@@ -1243,7 +1242,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_system_rows_inserted{instance=~\"^$Server$\"}[1m]))",
@@ -1255,7 +1254,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_system_rows_updated{instance=~\"^$Server$\"}[1m]))",
@@ -1267,7 +1266,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_system_rows_deleted{instance=~\"^$Server$\"}[1m]))",
@@ -1315,7 +1314,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1362,7 +1361,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_buffer_pool_read_requests{instance=~\"^$Server$\"}[1m]))",
@@ -1374,7 +1373,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_buffer_pool_write_requests{instance=~\"^$Server$\"}[1m]))",
@@ -1422,7 +1421,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1469,7 +1468,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_data_written{instance=~\"^$Server$\"}[1m]))",
@@ -1481,7 +1480,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_data_read{instance=~\"^$Server$\"}[1m]))",
@@ -1528,7 +1527,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1575,7 +1574,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_log_writes{instance=~\"^$Server$\"}[1m]))",
@@ -1587,7 +1586,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_os_log_fsyncs{instance=~\"^$Server$\"}[1m]))",
@@ -1599,7 +1598,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avg(irate(mysql_global_status_innodb_log_write_requests{instance=~\"^$Server$\"}[1m]))",
@@ -1646,7 +1645,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "description": "命中率 = 1 表示所有请求都在缓冲池中命中，无需从磁盘读取。\n命中率接近 0 表示大多数请求都需要从磁盘读取，缓存性能较低。",
       "fieldConfig": {
@@ -1695,7 +1694,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "(\n  rate(mysql_global_status_innodb_buffer_pool_read_requests{instance=~\"^$Server$\"}[3m])\n  -\n  rate(mysql_global_status_innodb_buffer_pool_reads{instance=~\"^$Server$\"}[3m])\n)\n/\nrate(mysql_global_status_innodb_buffer_pool_read_requests{instance=~\"^$Server$\"}[3m])\n",
@@ -1745,22 +1744,39 @@
       {
         "current": {
           "selected": false,
-          "text": "mysql-exporter.kube-monitoring:9104",
-          "value": "mysql-exporter.kube-monitoring:9104"
+          "text": "Tencent-GEES-Prod-VictoriaMetrics",
+          "value": "d2fd3de9-1e3f-419b-b1be-06768d59f0ab"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "Tencent-GEES-Prod-VictoriaMetrics",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "prod.bigdata.mysql.geesinfra.com:3306",
+          "value": "prod.bigdata.mysql.geesinfra.com:3306"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+          "uid": "${datasource}"
         },
-        "definition": "label_values(mysql_exporter_collector_duration_seconds,instance)",
-        "hide": 2,
+        "definition": "label_values(mysql_up,instance)",
+        "hide": 0,
         "includeAll": false,
         "label": "Server",
         "multi": false,
         "name": "Server",
         "options": [],
         "query": {
-          "query": "label_values(mysql_exporter_collector_duration_seconds,instance)",
+          "query": "label_values(mysql_up,instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
@@ -1793,8 +1809,8 @@
     ]
   },
   "timezone": "",
-  "title": "AliCloud-Test-MySQL",
-  "uid": "AliCloud-Test-MySQL",
-  "version": 1,
+  "title": "MySQL",
+  "uid": "MySQL",
+  "version": 6,
   "weekStart": ""
 }

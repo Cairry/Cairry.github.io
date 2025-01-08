@@ -20,14 +20,14 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 763,
   "graphTooltip": 1,
-  "id": 74,
+  "id": 400,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -94,14 +94,16 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
+          "editorMode": "code",
           "expr": "max(max_over_time(redis_uptime_in_seconds{instance=~\"$instance\"}[$__interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "metric": "",
+          "range": true,
           "refId": "A",
           "step": 1800
         }
@@ -112,7 +114,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -194,7 +196,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "expr": "sum(redis_connected_clients{instance=~\"$instance\"})",
           "format": "time_series",
@@ -205,7 +207,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "expr": "sum(redis_blocked_clients{instance=~\"$instance\"})",
           "format": "time_series",
@@ -220,7 +222,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -319,7 +321,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "expr": "redis_memory_used_bytes{instance=~\"$instance\"}",
           "format": "time_series",
@@ -333,7 +335,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "expr": "redis_memory_max_bytes{instance=~\"$instance\"}",
           "format": "time_series",
@@ -350,7 +352,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -432,7 +434,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(rate(redis_net_input_bytes_total{instance=~\"$instance\"}[5m]))",
@@ -446,7 +448,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(rate(redis_net_output_bytes_total{instance=~\"$instance\"}[5m]))",
@@ -465,7 +467,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -548,7 +550,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(redis_keyspace_hits_total{instance=~\"$instance\"}[5m])",
@@ -566,7 +568,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(redis_keyspace_misses_total{instance=~\"$instance\"}[5m])",
@@ -588,7 +590,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -673,7 +675,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "expr": "sum(rate(redis_commands_total{instance=~\"$instance\"} [1m])) by (cmd)",
           "format": "time_series",
@@ -691,7 +693,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -773,16 +775,14 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
-          "editorMode": "code",
-          "expr": "max(irate(redis_commands_duration_seconds_total{instance=~\"$instance\"}[1m])) by (cmd) != 0",
+          "expr": "sum(irate(redis_commands_duration_seconds_total{instance=~\"$instance\"}[1m])) by (cmd) != 0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ cmd }}",
           "metric": "redis_command_calls_total",
-          "range": true,
           "refId": "A",
           "step": 240
         }
@@ -793,7 +793,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -877,7 +877,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum (redis_db_keys{instance=~\"$instance\"}) by (db, instance)",
@@ -897,7 +897,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1000,7 +1000,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "expr": "sum(irate(redis_commands_duration_seconds_total{instance =~ \"$instance\"}[1m])) by (cmd)\n  /\nsum(irate(redis_commands_total{instance =~ \"$instance\"}[1m])) by (cmd)\n",
           "format": "time_series",
@@ -1018,7 +1018,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1100,7 +1100,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum (redis_db_keys{instance=~\"$instance\"}) by (instance) - sum (redis_db_keys_expiring{instance=~\"$instance\"}) by (instance)",
@@ -1116,7 +1116,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum (redis_db_keys_expiring{instance=~\"$instance\"}) by (instance)",
@@ -1141,9 +1141,31 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "Tencent-Aibuild-Prod-VictoriaMetrics",
+          "value": "cff6b5e1-ac5c-4307-98ac-dd3f91791a5c"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "Tencent-Aibuild-Prod-VictoriaMetrics",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "prod.wegic.redis.geesinfra.com:6379",
+          "value": "prod.wegic.redis.geesinfra.com:6379"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "da15f029-2b85-4273-b5ad-cd690abe3068"
+          "uid": "${datasource}"
         },
         "definition": "label_values(redis_up,instance)",
         "hide": 2,
@@ -1196,8 +1218,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "AliCloud-Prod-Redis",
-  "uid": "AliCloud-Prod-Redis",
-  "version": 10,
+  "title": "Redis",
+  "uid": "Redis",
+  "version": 3,
   "weekStart": ""
 }

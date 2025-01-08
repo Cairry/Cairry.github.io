@@ -20,14 +20,14 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 14191,
   "graphTooltip": 1,
-  "id": 237,
+  "id": 398,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -74,11 +74,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "elasticsearch_jvm_uptime_seconds",
-          "legendFormat": "{{name}}",
+          "expr": "elasticsearch_jvm_uptime_seconds{job=\"${job}\"}",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
@@ -89,7 +89,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -177,7 +177,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "elasticsearch_cluster_health_status{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",color=\"red\"} == 1 or (elasticsearch_cluster_health_status{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",color=\"green\"} == 1) + 1 or (elasticsearch_cluster_health_status{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",color=\"yellow\"} == 1) + 2\n",
@@ -194,7 +194,7 @@
     },
     {
       "datasource": {
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "description": "Number of nodes in the cluster",
       "fieldConfig": {
@@ -257,7 +257,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "elasticsearch_cluster_health_number_of_nodes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -275,7 +275,7 @@
     },
     {
       "datasource": {
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "description": "Number of data nodes in the cluster",
       "fieldConfig": {
@@ -338,7 +338,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "elasticsearch_cluster_health_number_of_data_nodes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -357,7 +357,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "description": "Cluster level changes which have not yet been executed",
       "fieldConfig": {
@@ -425,7 +425,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "elasticsearch_cluster_health_number_of_pending_tasks{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\"}",
@@ -445,7 +445,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -523,10 +523,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(elasticsearch_indices_indexing_index_total[1m])",
+          "expr": "rate(elasticsearch_indices_indexing_index_total{job=\"${job}\"}[1m])",
           "legendFormat": "Cluster: {{cluster}} - Name: {{name}}",
           "range": true,
           "refId": "A"
@@ -538,7 +538,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -616,10 +616,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "irate(elasticsearch_indices_search_query_total[5m])",
+          "expr": "irate(elasticsearch_indices_search_query_total{job=\"${job}\"}[5m])",
           "legendFormat": "Cluster: {{cluster}} - Name: {{name}}",
           "range": true,
           "refId": "A"
@@ -635,7 +635,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -685,7 +685,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "elasticsearch_process_cpu_percent{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
@@ -739,7 +739,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -789,7 +789,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "elasticsearch_jvm_memory_used_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
@@ -802,7 +802,7 @@
         },
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "elasticsearch_jvm_memory_max_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
@@ -813,7 +813,7 @@
         },
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "elasticsearch_jvm_memory_pool_peak_used_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
@@ -862,7 +862,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -912,7 +912,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "1-(elasticsearch_filesystem_data_available_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}/elasticsearch_filesystem_data_size_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"})",
           "format": "time_series",
@@ -980,7 +980,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -1035,7 +1035,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(elasticsearch_transport_tx_size_bytes_total{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}[$__rate_interval])",
@@ -1049,7 +1049,7 @@
         },
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(elasticsearch_transport_rx_size_bytes_total{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}[$__rate_interval])",
@@ -1101,7 +1101,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "description": "段过多可能会影响性能，应定期进行合并操作",
       "fill": 1,
@@ -1146,7 +1146,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "elasticsearch_indices_segments_count{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
@@ -1195,7 +1195,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1239,7 +1239,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "elasticsearch_indices_segments_memory_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
@@ -1287,7 +1287,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -1337,7 +1337,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "elasticsearch_indices_fielddata_memory_size_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
@@ -1390,7 +1390,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -1440,7 +1440,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "elasticsearch_indices_request_cache_memory_size_bytes{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}",
@@ -1492,7 +1492,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -1542,7 +1542,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "irate(elasticsearch_jvm_gc_collection_seconds_count{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}[$__rate_interval])",
           "format": "time_series",
@@ -1592,7 +1592,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+        "uid": "${datasource}"
       },
       "editable": true,
       "error": false,
@@ -1642,7 +1642,7 @@
       "targets": [
         {
           "datasource": {
-            "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+            "uid": "${datasource}"
           },
           "expr": "irate(elasticsearch_jvm_gc_collection_seconds_sum{job=\"$job\",instance=~\"$instance\",cluster=\"$cluster\",name=~\"$name\"}[$__rate_interval])",
           "format": "time_series",
@@ -1696,20 +1696,40 @@
       {
         "current": {
           "selected": false,
-          "text": "ElasticSearch",
-          "value": "ElasticSearch"
+          "text": "Tencent-Aibuild-Prod-VictoriaMetrics",
+          "value": "cff6b5e1-ac5c-4307-98ac-dd3f91791a5c"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "Tencent-Aibuild-Prod-VictoriaMetrics",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Tencent-Prod-Wegic-ElasticSearch",
+          "value": "Tencent-Prod-Wegic-ElasticSearch"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+          "uid": "${datasource}"
         },
-        "definition": "label_values(elasticsearch_cluster_health_status, job)",
+        "definition": "label_values(elasticsearch_cluster_health_status{job=\"Tencent-Prod-Wegic-ElasticSearch\"},job)",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "job",
         "options": [],
-        "query": "label_values(elasticsearch_cluster_health_status, job)",
+        "query": {
+          "query": "label_values(elasticsearch_cluster_health_status{job=\"Tencent-Prod-Wegic-ElasticSearch\"},job)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1722,12 +1742,12 @@
       {
         "current": {
           "selected": false,
-          "text": "elasticsearch",
-          "value": "elasticsearch"
+          "text": "es-7jmc6og3",
+          "value": "es-7jmc6og3"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+          "uid": "${datasource}"
         },
         "definition": "label_values(elasticsearch_indices_docs{job=\"$job\"},cluster)",
         "hide": 2,
@@ -1752,7 +1772,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+          "uid": "${datasource}"
         },
         "definition": "label_values(elasticsearch_indices_docs{job=\"$job\", cluster=\"$cluster\", name!=\"\"},name)",
         "hide": 2,
@@ -1772,12 +1792,12 @@
       {
         "current": {
           "selected": false,
-          "text": "elasticsearch-exporter.monitor:9114",
-          "value": "elasticsearch-exporter.monitor:9114"
+          "text": "10.70.64.145:9114",
+          "value": "10.70.64.145:9114"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "f8eb036e-ca36-4e63-a48f-983cc167cd4d"
+          "uid": "${datasource}"
         },
         "definition": "label_values(elasticsearch_indices_docs{job=\"$job\",job=\"$job\", cluster=\"$cluster\", name!=\"\"},instance)",
         "hide": 2,
@@ -1826,8 +1846,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "AWS-Test-Elasticsearch",
-  "uid": "AWS-Test-Elasticsearch",
-  "version": 11,
+  "title": "Elasticsearch",
+  "uid": "Elasticsearch",
+  "version": 2,
   "weekStart": ""
 }

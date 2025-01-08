@@ -30,12 +30,13 @@
 
 ## 部署Exporter
 ``` 
-apiVersion: apps/v1kind: Deployment
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   labels:
     app: redis-exporter
   name: redis-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
@@ -65,7 +66,7 @@ metadata:
   labels:
     app: redis-exporter
   name: redis-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   ports:
   - name: http-metirc
@@ -90,7 +91,7 @@ spec:
     - job_name: 'Redis'
       scrape_interval: 1m
       static_configs:
-        - targets: ['redis-exporter.kube-monitoring:9121']
+        - targets: ['redis-exporter.monitoring:9121']
 ```
 
 - Prom配置Target（可以采集多个Redis实例
@@ -101,6 +102,7 @@ spec:
   value: "xxx:xxx"
 ```
 ```
+    - job_name: 'Redis'
       static_configs:
         - targets:
           - redis://'xxx:xxx'@redis-a.infra:6379
@@ -112,13 +114,12 @@ spec:
         - source_labels: [__address__]
           target_label: __param_target
         - source_labels: [__param_target]
-          separator: ;
           regex: redis://.*@(.*):(\d+)
           target_label: instance
           replacement: ${1}:${2}
           action: replace
         - target_label: __address__
-          replacement: redis-exporter.monitor:9121
+          replacement: redis-exporter.monitoring:9121
 ```
 **参数解释**
 ```

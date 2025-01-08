@@ -33,7 +33,7 @@ metadata:
   labels:
     app: elasticsearch-exporter
   name: elasticsearch-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
@@ -64,7 +64,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: elasticsearch-exporter
-  namespace: monitor
+  namespace: monitoring
 spec:
   ports:
     - port: 9114
@@ -76,12 +76,27 @@ spec:
 ```
 
 ## Prometheus 端点配置
+固定端点
 ``` 
     - job_name: 'ElasticSearch'
       scrape_interval: 1m
       static_configs:
         - targets: 
           - elasticsearch-exporter.monitor:9114
+```
+Kubernetes发现
+``` 
+    - job_name: 'ElasticSearch'
+      kubernetes_sd_configs:
+        - role: endpoints
+      relabel_configs:
+      - source_labels:
+          [
+            __meta_kubernetes_namespace,
+            __meta_kubernetes_service_name,
+          ]
+        action: keep
+        regex: monitoring;elasticsearch-exporter
 ```
 
 ## 监控大盘
