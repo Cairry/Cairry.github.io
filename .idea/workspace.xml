@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Dashboard/elasticsearch.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Dashboard/elasticsearch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Dashboard/mysql.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Dashboard/mysql.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Dashboard/redis.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Dashboard/redis.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Exporter/elasticsearch.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/elasticsearch.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Exporter/mysql.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/mysql.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Exporter/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Exporter/redis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Dashboard/mongo.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Dashboard/mongo.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +120,7 @@
       <workItem from="1734510215955" duration="33749000" />
       <workItem from="1735780972601" duration="65000" />
       <workItem from="1735786500415" duration="17000" />
-      <workItem from="1736148465193" duration="23180000" />
+      <workItem from="1736148465193" duration="24346000" />
     </task>
     <servers />
   </component>

@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 233,
+  "id": 403,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -36,7 +36,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -83,7 +83,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "mongodb_mongod_replset_member_uptime{instance=\"${instance}\"}",
@@ -98,7 +98,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -149,7 +149,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "mongodb_mongod_replset_number_of_members{instance=\"${instance}\"}",
@@ -166,7 +166,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -228,7 +228,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "mongodb_mongod_replset_member_health{instance=\"${instance}\"}",
@@ -243,7 +243,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -322,7 +322,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "mongodb_memory{instance=\"${instance}\"}",
@@ -337,7 +337,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -415,7 +415,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(mongodb_connections{instance=\"${instance}\"}[5m])",
@@ -430,7 +430,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -508,7 +508,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(mongodb_op_counters_total{instance=\"${instance}\"}[5m])",
@@ -523,7 +523,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -602,7 +602,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "irate(mongodb_network_bytes_total{instance=\"${instance}\"}[5m])",
@@ -617,7 +617,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -695,7 +695,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "rate(mongodb_mongod_metrics_ttl_deleted_documents_total{instance=\"${instance}\"}[5m])",
@@ -706,7 +706,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "rate(mongodb_mongod_metrics_ttl_passes_total{instance=\"${instance}\"}[5m])",
@@ -728,9 +728,31 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "Tencent-GEES-Prod-VictoriaMetrics",
+          "value": "d2fd3de9-1e3f-419b-b1be-06768d59f0ab"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "Tencent-GEES-Prod-VictoriaMetrics",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "prod.gees.mongo-1.geesinfra.com:27017,prod.gees.mongo-2.geesinfra.com:27017",
+          "value": "prod.gees.mongo-1.geesinfra.com:27017,prod.gees.mongo-2.geesinfra.com:27017"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "d2782e26-82b4-451e-9be4-d2c2a7a7bf09"
+          "uid": "${datasource}"
         },
         "definition": "label_values(mongodb_up,instance)",
         "hide": 0,
@@ -756,8 +778,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "AliCloud-Test-MongoDB",
-  "uid": "AliCloud-Test-MongoDB",
-  "version": 1,
+  "title": "MongoDB",
+  "uid": "MongoDB",
+  "version": 3,
   "weekStart": ""
 }
