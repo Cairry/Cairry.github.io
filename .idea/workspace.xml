@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Dashboard/ceph.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Exporter/ceph.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Prometheus/auth.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vitepress/config.mts" beforeDir="false" afterPath="$PROJECT_DIR$/.vitepress/config.mts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +61,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/Exporter/img" />
       <recent name="$PROJECT_DIR$/docs/Exporter/kubernetes-resource" />
       <recent name="$PROJECT_DIR$/docs/install/img" />
       <recent name="$PROJECT_DIR$/docs/Guide/img" />
       <recent name="$PROJECT_DIR$/docs/Monitor/business/img" />
-      <recent name="$PROJECT_DIR$/docs/Exporter/img" />
     </key>
   </component>
   <component name="RunManager">
@@ -121,7 +121,9 @@
       <workItem from="1734510215955" duration="33749000" />
       <workItem from="1735780972601" duration="65000" />
       <workItem from="1735786500415" duration="17000" />
-      <workItem from="1736148465193" duration="38367000" />
+      <workItem from="1736148465193" duration="39103000" />
+      <workItem from="1740227460336" duration="7000" />
+      <workItem from="1741575741559" duration="316000" />
     </task>
     <servers />
   </component>

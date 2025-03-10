@@ -80,6 +80,10 @@ export default defineConfig({
                             text: '容量规划篇',
                             link: '/docs/Prometheus/storage.md'
                         },
+                        {
+                            text: 'Basic Auth',
+                            link: '/docs/Prometheus/auth.md'
+                        },
                     ]
                 },
                 {
