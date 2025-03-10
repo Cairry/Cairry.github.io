@@ -28,3 +28,14 @@ prometheus --web.config.file=auth.yml
 401 Unauthorized
 ```
 由于未能提供有效的用户名和密码，因此这将返回响应。
+
+## 在 Target 中配置 Basic auth
+``` 
+scrape_configs:
+  - job_name: 'your_job_name'  # 任务名称
+    basic_auth:
+      username: 'your_username'  # Basic Auth 用户名
+      password: 'your_password'  # Basic Auth 密码
+    static_configs:
+      - targets: ['your_target:port']  # 目标地址
+```
