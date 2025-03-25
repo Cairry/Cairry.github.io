@@ -41,8 +41,9 @@ sum(http_server_duration_milliseconds_count{job=~"service",http_status_code=~"4.
 ## 业务服务运行状态
 > 通过`log2metric-exporter`实现分析业务服务Error日志；
 - `分析Error错误日志的增长率`：反映出过去某一时间内与另一段时间相比，最近的时间内，error增长百分之多少。
+- 该公式为意思为：过去5分钟内err日志基数为50条，并且增长率大于等于30%；
 ``` 
-(increase(l2m_level_info{level="ERROR"}[5m]) - increase(l2m_level_info{level="ERROR"}[20m]) offset 15m) / increase(l2m_level_info{level="ERROR"}[20m] offset 15m) * 100 > 100
+increase(l2m_level_info{level="ERROR"}[5m]) > 50 and (increase(l2m_level_info{level="ERROR"}[5m]) - increase(l2m_level_info{level="ERROR"}[20m]) offset 15m) / increase(l2m_level_info{level="ERROR"}[20m] offset 15m) * 100 >= 30
 ```
 - `分析Error错误日志的占比`：反映出过去某一时间内错误日志占总请求的百分之多少。
 ``` 
