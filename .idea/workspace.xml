@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Dashboard/opentelemetry.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/Dashboard/victoriametrics.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d4212da0-e045-4470-bcc7-274883967a55" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +127,7 @@
       <workItem from="1747214515935" duration="112000" />
       <workItem from="1748404738911" duration="671000" />
       <workItem from="1748587956473" duration="1000" />
-      <workItem from="1749115465515" duration="378000" />
+      <workItem from="1749115465515" duration="739000" />
     </task>
     <servers />
   </component>
