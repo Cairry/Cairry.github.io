@@ -15,7 +15,7 @@ hero:
       link: /docs/
     - theme: alt
       text: 演示环境（admin/123）
-      link: http://8.147.234.89/
+      link: http://183.92.128.112:45639
       
 features:
   - title: 多租户
