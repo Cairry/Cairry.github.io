@@ -12,27 +12,19 @@
 
 ### 进入项目目录
 ``` 
-# cd WatchAlert-master/deploy/kubernetes
+# cd WatchAlert-master/deploy/helmchart
 ```
 
-### 创建配置
+### 启动服务
+> 默认启动配置中`MySQL` `Redis`是没有持久化的，生产上建议启用持久化，或使用内部中间件;
 ``` 
-# kubectl create configmap w8t-config --from-file=../../config/config.yaml
+# helm install -n observability watchalert .
 ```
-``` 
-# kubectl create configmap w8t-init-config --from-file=../sql/auto_import.sh --from-file=../sql/notice_template_examples.sql --from-file=../sql/rule_template_groups.sql \
---from-file=../sql/rule_templates.sql --from-file=../sql/tenants.sql --from-file=../sql/tenants_linked_users.sql
-```
-
-``` 
-# kubectl apply -f mysql.yaml -f redis.yaml -f w8t-service.yaml -f w8t-web.yaml -f init-job.yaml
-```
-
-⚠️ 注意：
-- init job 运行结束后请勿再次运行，以防数据重复。
 
 ### 访问项目
-- http://${HOST}:30800（svc nodePort）
+``` 
+export NODE_PORT=$(kubectl get --namespace observability -o jsonpath="{.spec.ports[0].nodePort}" services watchalert-web)
+export NODE_IP=$(kubectl get nodes --namespace observability -o jsonpath="{.items[0].status.addresses[0].address}")
+echo http://$NODE_IP:$NODE_PORT
+```
 - 登陆页初始化`admin`密码.
-
-![img.png](img/login.png)
